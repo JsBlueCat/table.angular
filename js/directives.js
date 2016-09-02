@@ -1,2 +1,6 @@
 angular.module('Ui.Cery', [])
-.directive('DynamicTable',)
+.directive('DynamicTable',function(){
+    return {
+        
+    }
+})
