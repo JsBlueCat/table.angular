@@ -4,5 +4,4 @@ MyApp.controller('baseCtrl', ['$scope', function($scope) {
 
 
 
-
 }])
