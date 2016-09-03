@@ -1,6 +1,6 @@
 var MyApp = angular.module('DynamicTable', ['Ui.Cery']);
 
-MyApp.controller('baseCtrl', ['$scope', '$http', function($scope,$http) {
+MyApp.controller('baseCtrl', ['$scope', '$http', function($scope, $http) {
     /*
         Type 属性代表表格中的表现形式
         0 文字
@@ -46,7 +46,9 @@ MyApp.controller('baseCtrl', ['$scope', '$http', function($scope,$http) {
     }, ]
 
     $scope.initialize = function() {
-
+        $http.get('datas.json').then(function(res) {
+            $scope.datas = res.data;
+        })
     }
 
 }])
