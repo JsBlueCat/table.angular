@@ -1,11 +1,12 @@
 var MyApp = angular.module('DynamicTable', ['Ui.Cery']);
 
-MyApp.controller('baseCtrl', ['$scope', function($scope) {
+MyApp.controller('baseCtrl', ['$scope', '$http', function($scope,$http) {
     /*
         Type 属性代表表格中的表现形式
         0 文字
         1 输入框
         2 选择框
+        3 金额
      */
     /*
         Position 属性代表所处的位置
@@ -13,23 +14,39 @@ MyApp.controller('baseCtrl', ['$scope', function($scope) {
         1 靠中
         2 靠右
      */
+    /*
+        id 属性为数据项的属性名称
+        如 obj = {
+            name:"Cery",
+            age:21
+        }
+        id 为 name or age 
+        obj[id] 可以取到相应数据
+     */
     $scope.tableTitles = [{
-        name: '序号',
+        id: "index_num",
+        name: "序号",
         type: 0,
-        position: 0
+        position: 0,
     }, {
-        name: '名称',
+        id: "name",
+        name: "名称",
         type: 0,
         position: 1
     }, {
-        name: '其他',
-        type: 0,
+        id: "price",
+        name: "可购金额",
+        type: 3,
         position: 2
     }, {
-        name: '其他',
+        id: "other",
+        name: "其他",
         type: 0,
         position: 2
     }, ]
 
+    $scope.initialize = function() {
+
+    }
 
 }])

@@ -4,14 +4,41 @@
             <th ng-repeat="title in titles track by $index" ng-class="{'text-left':title.position==0,'text-center':title.position==1,'text-right':title.position==2}">
                 {{title.name}}
             </th>
+            <th class="text-center" style="width:120px;">相关操作</th>
         </tr>
+        <!--tr end-->
     </thead>
+    <!--thead end-->
 
     <tbody>
-        <tr ng-show="titles.length!=0">
-            <td colspan="{{titles.length}}" class="text-center">
+        <!--没有数据项时显示-->
+        <tr ng-show="datas.length==0">
+            <td colspan="{{titles.length+1}}" class="text-center">
                 <span ng-transclude></span>
             </td>
         </tr>
+        <!--tr end-->
+        <!--数据项-->
+        <tr ng-repeat="data in datas">
+            <td ng-repeat="title in titles track by $index" ng-class="{'text-left':title.position==0,'text-center':title.position==1,'text-right':title.position==2}">
+                <span ng-if="title.type==0">
+                    {{data[title.id]}}
+                </span>
+                <span ng-if="title.type==1">
+
+                </span>
+                <span ng-if="title.type==2">
+                    
+                </span>
+                <span ng-if="title.type==3">
+                     {{data[title.id]|currency:''}}
+                </span>
+            </td>
+            <!--操作-->
+            <td></td>
+        </tr>
+        <!--tr end-->
     </tbody>
+    <!--tbody end-->
 </table>
+<!--table end-->

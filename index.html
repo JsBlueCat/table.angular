@@ -11,8 +11,8 @@
 
 <body ng-controller="baseCtrl">
 
-    <div class="table-responsive">
-        <dynamic-table titles="tableTitles">
+    <div class="table-responsive" ng-init="initialize()">
+        <dynamic-table titles="tableTitles" datas="datas">
             暂无数据
         </dynamic-table>
     </div>
