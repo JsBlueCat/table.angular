@@ -1,0 +1,17 @@
+<table class="table table-striped table-bordered table-hover">
+    <thead>
+        <tr>
+            <th ng-repeat="title in titles track by $index" ng-class="{'text-left':title.position==0,'text-center':title.position==1,'text-right':title.position==2}">
+                {{title.name}}
+            </th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr ng-show="titles.length!=0">
+            <td colspan="{{titles.length}}" class="text-center">
+                <span ng-transclude></span>
+            </td>
+        </tr>
+    </tbody>
+</table>
