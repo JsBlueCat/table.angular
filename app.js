@@ -46,14 +46,27 @@ MyApp.controller('baseCtrl', ['$scope', '$http', function($scope, $http) {
     }, {
         id: "choose",
         name: "选择",
-        choose_name:"name",
+        choose_name: "name",
         type: 2,
         position: 2
-    }, ]
+    }, ];
+    
+    $scope.options = [{
+        name: "修改",
+        func: function(item) {
+            console.log(item);
+        }
+    }, {
+        name: "删除",
+        func: function(item) {
+            console.log(item);
+        }
+    }];
+
 
     $scope.initialize = function() {
         $http.get('datas.json').then(function(res) {
-            $scope.datas = res.data;
+            $scope.datas = res.data || [];
         })
     }
 

@@ -3,7 +3,8 @@ angular.module('Ui.Cery', [])
         return {
             scope: {
                 titles: '=',
-                datas: '='
+                datas: '=',
+                optionItems: '='
             },
             restrict: 'E',
             templateUrl: 'js/table.html',

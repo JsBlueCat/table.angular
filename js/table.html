@@ -4,7 +4,7 @@
             <th ng-repeat="title in titles track by $index" ng-class="{'text-left':title.position==0,'text-center':title.position==1,'text-right':title.position==2}">
                 {{title.name}}
             </th>
-            <th class="text-center" style="width:120px;">相关操作</th>
+            <th class="text-center" style="width:150px;">相关操作</th>
         </tr>
         <!--tr end-->
     </thead>
@@ -36,8 +36,10 @@
                 </span>
             </td>
             <!--操作-->
-            <td>
-
+            <td class="text-center">
+                <button type="button" class="btn btn-default" ng-repeat="option in optionItems track by $index" ng-click="option.func(data)">
+                    {{option.name}}
+                </button>
             </td>
         </tr>
         <!--tr end-->

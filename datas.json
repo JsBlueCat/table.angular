@@ -41,8 +41,8 @@
     "choose": { "name": "1计划", "id": 1 },
     "choose_list": [{ "name": "1计划", "id": 1 }, { "name": "2计划", "id": 2 }]
 }, {
-    "index_num": 5,
-    "name": "月月丰计划5",
+    "index_num": 6,
+    "name": "月月丰计划6",
     "price": 1693644,
     "other": "其他数据",
     "choose": { "name": "1计划", "id": 1 },
