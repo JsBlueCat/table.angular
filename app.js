@@ -46,6 +46,7 @@ MyApp.controller('baseCtrl', ['$scope', '$http', function($scope, $http) {
     }, {
         id: "choose",
         name: "选择",
+        choose_name:"name",
         type: 2,
         position: 2
     }, ]
