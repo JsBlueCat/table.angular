@@ -24,11 +24,13 @@
                 <span ng-if="title.type==0">
                     {{data[title.id]}}
                 </span>
-                <span ng-if="title.type==1">
-
+                <span ng-if="title.type==1" class="form-group">
+                    <input type="text" class="form-control" placeholder="" ng-model="data[title.id]">
                 </span>
-                <span ng-if="title.type==2">
-                    
+                <span ng-if="title.type==2" class="form-group">
+                    <select class="form-control" ng-model="data[title.id]" ng-options="item.name for item in data.choose_list track by $index">
+                    </select>
+                    {{data[title.id]}}
                 </span>
                 <span ng-if="title.type==3">
                      {{data[title.id]|currency:''}}
