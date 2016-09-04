@@ -28,7 +28,7 @@
                     <input type="text " class="form-control " placeholder=" " ng-model="data[title.id] ">
                 </span>
                 <span ng-if="title.type==2 " class="form-group ">
-                    <select class="form-control " ng-model="data[title.id] " ng-options="item[title.choose_name] for item in data.choose_list ">
+                    <select class="form-control " ng-model="data[title.id] " ng-options="item[title.choose_name] for item in data[title.choose_list] ">
                     </select>
                 </span>
                 <span ng-if="title.type==3 ">

@@ -46,11 +46,12 @@ MyApp.controller('baseCtrl', ['$scope', '$http', function($scope, $http) {
     }, {
         id: "choose",
         name: "选择",
-        choose_name: "name",
+        choose_name: "name", //对应列表内显示的项
+        choose_list: "choose_list", //对应列表项
         type: 2,
         position: 2
     }, ];
-    
+
     $scope.options = [{
         name: "修改",
         func: function(item) {
