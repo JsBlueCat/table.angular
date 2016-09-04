@@ -26,7 +26,6 @@
                 </span>
                 <span ng-if="title.type==1" class="form-group">
                     <input type="text" class="form-control" placeholder="" ng-model="data[title.id]">
-                    {{data[title.id]}}
                 </span>
                 <span ng-if="title.type==2" class="form-group">
                     <select class="form-control" ng-model="data[title.id]" ng-options="item.name for item in data.choose_list track by $index">
