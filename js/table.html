@@ -4,7 +4,7 @@
             <th ng-repeat="title in titles track by $index" ng-class="{'text-left':title.position==0,'text-center':title.position==1,'text-right':title.position==2}">
                 {{title.name}}
             </th>
-            <th class="text-center" style="width:150px;">相关操作</th>
+            <th class="text-center" style="width:{{optionItems.length * 75}}px;">相关操作</th>
         </tr>
         <!--tr end-->
     </thead>
@@ -12,32 +12,32 @@
 
     <tbody>
         <!--没有数据项时显示-->
-        <tr ng-show="datas.length==0">
-            <td colspan="{{titles.length+1}}" class="text-center">
+        <tr ng-show="datas.length==0 ">
+            <td colspan="{{titles.length+1}} " class="text-center ">
                 <span ng-transclude></span>
             </td>
         </tr>
         <!--tr end-->
         <!--数据项-->
-        <tr ng-repeat="data in datas">
-            <td ng-repeat="title in titles track by $index" ng-class="{'text-left':title.position==0,'text-center':title.position==1,'text-right':title.position==2}">
-                <span ng-if="title.type==0">
+        <tr ng-repeat="data in datas ">
+            <td ng-repeat="title in titles track by $index " ng-class="{ 'text-left':title.position==0, 'text-center':title.position==1, 'text-right':title.position==2} ">
+                <span ng-if="title.type==0 ">
                     {{data[title.id]}}
                 </span>
-                <span ng-if="title.type==1" class="form-group">
-                    <input type="text" class="form-control" placeholder="" ng-model="data[title.id]">
+                <span ng-if="title.type==1 " class="form-group ">
+                    <input type="text " class="form-control " placeholder=" " ng-model="data[title.id] ">
                 </span>
-                <span ng-if="title.type==2" class="form-group">
-                    <select class="form-control" ng-model="data[title.id]" ng-options="item[title.choose_name] for item in data.choose_list">
+                <span ng-if="title.type==2 " class="form-group ">
+                    <select class="form-control " ng-model="data[title.id] " ng-options="item[title.choose_name] for item in data.choose_list ">
                     </select>
                 </span>
-                <span ng-if="title.type==3">
+                <span ng-if="title.type==3 ">
                      {{data[title.id]|currency:''}}
                 </span>
             </td>
             <!--操作-->
-            <td class="text-center">
-                <button type="button" class="btn btn-default" ng-repeat="option in optionItems track by $index" ng-click="option.func(data)">
+            <td class="text-center ">
+                <button type="button " class="btn btn-default " ng-repeat="option in optionItems track by $index " ng-click="option.func(data) ">
                     {{option.name}}
                 </button>
             </td>
