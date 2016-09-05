@@ -58,6 +58,7 @@
         <div class="pagination pageinfo pull-left form-inline">
             当前<span class="page-number">{{currentPage}}</span>/<span class="page-number">4</span>页,共<span>97</span>条
             跳转到第<select ng-model="currentPage" class="form-control" ng-options="page for page in pageLists"></select>页
+            每页显示<select ng-model="maxShowNum" ng-options="num for num in [25,50,100]"  class="form-control"></select>条信息
         </div>
     </nav>
     <!--分页-->

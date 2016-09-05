@@ -64,19 +64,21 @@ angular.module('Ui.Cery', [])
                         })
                     })
                 })
-                var PageDatasListener = scope.$watch('maxDataLength',function(){
+                var PageDatasListener = scope.$watch('maxDataLength',function(newValue,oldValue){
                     scope.maxPageNum = Math.ceil(scope.maxDataLength * 1.0 / scope.maxShowNum);//有多少页
                     scope.pageLists  = [];
                     for(var i =1 ;i<=scope.maxPageNum;i++){
                         scope.pageLists.push(i);
                     }
                 })
-                var PageShowListener = scope.$watch('maxShowNum',function(){
+                var PageShowListener = scope.$watch('maxShowNum',function(newValue,oldValue){
                     scope.maxPageNum = Math.ceil(scope.maxDataLength * 1.0 / scope.maxShowNum);//有多少页
                     scope.pageLists  = [];
                     for(var i =1 ;i<=scope.maxPageNum;i++){
                         scope.pageLists.push(i);
                     }
+                    var CurrentPage_Max_Num = oldValue * scope.currentPage;
+                    scope.currentPage =  Math.ceil(CurrentPage_Max_Num * 1.0/newValue);
                 })
                 scope.ChangePage = function(pageNum){//切换页面
                     scope.currentPage = pageNum;
