@@ -65,12 +65,16 @@ MyApp.controller('baseCtrl', ['$scope', '$http', function($scope, $http) {
             console.log(item);
         }
     }];
-
+    $scope.NowPage =  1;
+    $scope.MaxShowNum = 25;
 
     $scope.initialize = function() {
         $http.get('datas.json').then(function(res) {
             $scope.datas = res.data || [];
         })
     }
-
+    $scope.ChangePageNum = function(CurrentPage,MaxShowNum){
+        console.log(CurrentPage);
+        console.log(MaxShowNum);
+    }
 }])

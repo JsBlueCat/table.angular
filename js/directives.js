@@ -36,7 +36,8 @@ angular.module('Ui.Cery', [])
                 optionItems: '=',
                 currentPage:'=',
                 maxDataLength:'=',
-                maxShowNum:'='
+                maxShowNum:'=',
+                changeData:'='
             },
             restrict: 'E',
             templateUrl: 'js/table.html',
@@ -47,7 +48,7 @@ angular.module('Ui.Cery', [])
                 scope.datas = scope.datas || []; //设置默认初值
                 var Datalistener = scope.$watch('datas', function() { //监听datas改变
                     scope.datas = scope.datas || [];
-                    var choose_list_titles = scope.titles.filter(function(x) {
+                    var choose_list_titles = scope.titles.filter(function(x) {//所有的选择列表
                         return x.type == 2
                     }).map(function(x) {
                         return {
@@ -65,20 +66,24 @@ angular.module('Ui.Cery', [])
                     })
                 })
                 var PageDatasListener = scope.$watch('maxDataLength',function(newValue,oldValue){
-                    scope.maxPageNum = Math.ceil(scope.maxDataLength * 1.0 / scope.maxShowNum);//有多少页
+                    scope.maxPageNum = Math.ceil(scope.maxDataLength * 1.0 / scope.maxShowNum) || 1;//有多少页
                     scope.pageLists  = [];
                     for(var i =1 ;i<=scope.maxPageNum;i++){
                         scope.pageLists.push(i);
                     }
                 })
                 var PageShowListener = scope.$watch('maxShowNum',function(newValue,oldValue){
-                    scope.maxPageNum = Math.ceil(scope.maxDataLength * 1.0 / scope.maxShowNum);//有多少页
+                    scope.maxPageNum = Math.ceil(scope.maxDataLength * 1.0 / scope.maxShowNum) || 1;//有多少页
                     scope.pageLists  = [];
                     for(var i =1 ;i<=scope.maxPageNum;i++){
                         scope.pageLists.push(i);
                     }
                     var CurrentPage_Max_Num = oldValue * scope.currentPage;
                     scope.currentPage =  Math.ceil(CurrentPage_Max_Num * 1.0/newValue);
+                    scope.changeData(scope.currentPage,scope.maxShowNum);
+                })
+                var PageListener =  scope.$watch('currentPage',function(newValue,oldValue){
+                    scope.changeData(scope.currentPage,scope.maxShowNum);
                 })
                 scope.ChangePage = function(pageNum){//切换页面
                     scope.currentPage = pageNum;

@@ -13,10 +13,10 @@
 <body ng-controller="baseCtrl"  ng-init="initialize()">
 
     
-    <dynamic-table titles="tableTitles" datas="datas" data-find-option="id" option-items="options" current-page=1 max-show-num="25" max-data-length="dataLength">
+    <dynamic-table titles="tableTitles" datas="datas" data-find-option="id" option-items="options" current-page="NowPage" max-show-num="MaxShowNum" max-data-length="dataLength" change-data="ChangePageNum">
         暂无数据
     </dynamic-table>
-    
+    {{NowPage}}
 
 
     <script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
