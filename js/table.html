@@ -1,48 +1,64 @@
-<table class="table table-striped table-bordered table-hover">
-    <thead>
-        <tr>
-            <th ng-repeat="title in titles track by $index" ng-class="{'text-left':title.position==0,'text-center':title.position==1,'text-right':title.position==2}">
-                {{title.name}}
-            </th>
-            <th class="text-center" style="width:{{optionItems.length * 75}}px;">相关操作</th>
-        </tr>
-        <!--tr end-->
-    </thead>
-    <!--thead end-->
+<div class="table-responsive">
+    <table class="table table-striped table-bordered table-hover">
+        <thead>
+            <tr>
+                <th ng-repeat="title in titles track by $index" ng-class="{'text-left':title.position==0,'text-center':title.position==1,'text-right':title.position==2}">
+                    {{title.name}}
+                </th>
+                <th class="text-center" style="width:{{optionItems.length * 75}}px;">相关操作</th>
+            </tr>
+            <!--tr end-->
+        </thead>
+        <!--thead end-->
 
-    <tbody>
-        <!--没有数据项时显示-->
-        <tr ng-show="datas.length==0 ">
-            <td colspan="{{titles.length+1}} " class="text-center ">
-                <span ng-transclude></span>
-            </td>
-        </tr>
-        <!--tr end-->
-        <!--数据项-->
-        <tr ng-repeat="data in datas ">
-            <td ng-repeat="title in titles track by $index " ng-class="{ 'text-left':title.position==0, 'text-center':title.position==1, 'text-right':title.position==2} ">
-                <span ng-if="title.type==0 ">
-                    {{data[title.id]}}
-                </span>
-                <span ng-if="title.type==1 " class="form-group ">
-                    <input type="text " class="form-control " placeholder=" " ng-model="data[title.id] ">
-                </span>
-                <span ng-if="title.type==2 " class="form-group ">
-                    <select class="form-control " ng-model="data[title.id] " ng-options="item[title.choose_name] for item in data[title.choose_list] ">
-                    </select>
-                </span>
-                <span ng-if="title.type==3 ">
-                     {{data[title.id]|currency:''}}
-                </span>
-            </td>
-            <!--操作-->
-            <td class="text-center ">
-                <button type="button " class="btn btn-default " ng-repeat="option in optionItems track by $index " ng-click="option.func(data) ">
-                    {{option.name}}
-                </button>
-            </td>
-        </tr>
-        <!--tr end-->
-    </tbody>
-    <!--tbody end-->
-</table>
+        <tbody>
+            <!--没有数据项时显示-->
+            <tr ng-show="datas.length==0 ">
+                <td colspan="{{titles.length+1}} " class="text-center ">
+                    <span ng-transclude></span>
+                </td>
+            </tr>
+            <!--tr end-->
+            <!--数据项-->
+            <tr ng-repeat="data in datas ">
+                <td ng-repeat="title in titles track by $index " ng-class="{ 'text-left':title.position==0, 'text-center':title.position==1, 'text-right':title.position==2} ">
+                    <span ng-if="title.type==0 ">
+                        {{data[title.id]}}
+                    </span>
+                    <span ng-if="title.type==1 " class="form-group ">
+                        <input type="text " class="form-control " placeholder=" " ng-model="data[title.id] ">
+                    </span>
+                    <span ng-if="title.type==2 " class="form-group ">
+                        <select class="form-control " ng-model="data[title.id] " ng-options="item[title.choose_name] for item in data[title.choose_list] ">
+                        </select>
+                    </span>
+                    <span ng-if="title.type==3 ">
+                        {{data[title.id]|currency:''}}
+                    </span>
+                </td>
+                <!--操作-->
+                <td class="text-center ">
+                    <button type="button " class="btn btn-default " ng-repeat="option in optionItems track by $index " ng-click="option.func(data) ">
+                        {{option.name}}
+                    </button>
+                </td>
+            </tr>
+            <!--tr end-->
+        </tbody>
+        <!--tbody end-->
+    </table>
+    <!--table end-->
+
+    <nav class="pull-right">
+        <ul class="pagination">
+            <li ng-class="disabled"><a href="#">&laquo;上一步</a></li>
+            <li><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">5</a></li>
+            <li><a href="#">&raquo;下一步</a></li>
+        </ul>
+    </nav>
+    <!--分页-->
+</div>

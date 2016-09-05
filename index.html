@@ -9,13 +9,13 @@
 
 
 
-<body ng-controller="baseCtrl">
+<body ng-controller="baseCtrl"  ng-init="initialize()">
 
-    <div class="table-responsive" ng-init="initialize()">
-        <dynamic-table titles="tableTitles" datas="datas" data-find-option="id" option-items="options">
-            暂无数据
-        </dynamic-table>
-    </div>
+    
+    <dynamic-table titles="tableTitles" datas="datas" data-find-option="id" option-items="options">
+        暂无数据
+    </dynamic-table>
+    
 
 
     <script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
