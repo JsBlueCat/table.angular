@@ -49,16 +49,16 @@
     </table>
     <!--table end-->
 
-    <nav class="pull-right">
-        <ul class="pagination">
-            <li ng-class="disabled"><a href="#">&laquo;上一步</a></li>
-            <li><a href="#">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li><a href="#">5</a></li>
-            <li><a href="#">&raquo;下一步</a></li>
+    <nav class="pull-right page">
+        <ul class="pagination pull-left">
+            <li ng-class="{true: 'disabled', false: ''}[currentPage==1]"><a href="javascript:;" ng-click="PrePage()">&laquo;上一页</a></li>
+            <li ng-repeat="page in pageLists" ng-class="{true: 'active', false: ''}[page==currentPage]"><a href="javascript:;" ng-click="ChangePage(page)">{{page}}</a></li>
+            <li ng-class="{true: 'disabled', false: ''}[currentPage==maxPageNum]"><a href="javascript:;" ng-click="NextPage()">下一页&raquo;</a></li>
         </ul>
+        <div class="pagination pageinfo pull-left form-inline">
+            当前<span class="page-number">{{currentPage}}</span>/<span class="page-number">4</span>页,共<span>97</span>条
+            跳转到第<select ng-model="currentPage" class="form-control" ng-options="page for page in pageLists"></select>页
+        </div>
     </nav>
     <!--分页-->
 </div>

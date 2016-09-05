@@ -1,4 +1,4 @@
-if (!Array.prototype.find) {
+if (!Array.prototype.find) {//模拟es6 find
   Object.defineProperty(Array.prototype, 'find', {
     enumerable: false,
     configurable: true,
@@ -33,7 +33,10 @@ angular.module('Ui.Cery', [])
             scope: {
                 titles: '=',
                 datas: '=',
-                optionItems: '='
+                optionItems: '=',
+                currentPage:'=',
+                maxDataLength:'=',
+                maxShowNum:'='
             },
             restrict: 'E',
             templateUrl: 'js/table.html',
@@ -42,7 +45,7 @@ angular.module('Ui.Cery', [])
             link: function(scope, element, attr) {
                 scope.titles = scope.titles || []; //设置默认初值
                 scope.datas = scope.datas || []; //设置默认初值
-                var listener = scope.$watch('datas', function() { //监听datas改变
+                var Datalistener = scope.$watch('datas', function() { //监听datas改变
                     scope.datas = scope.datas || [];
                     var choose_list_titles = scope.titles.filter(function(x) {
                         return x.type == 2
@@ -61,6 +64,31 @@ angular.module('Ui.Cery', [])
                         })
                     })
                 })
+                var PageDatasListener = scope.$watch('maxDataLength',function(){
+                    scope.maxPageNum = Math.ceil(scope.maxDataLength * 1.0 / scope.maxShowNum);//有多少页
+                    scope.pageLists  = [];
+                    for(var i =1 ;i<=scope.maxPageNum;i++){
+                        scope.pageLists.push(i);
+                    }
+                })
+                var PageShowListener = scope.$watch('maxShowNum',function(){
+                    scope.maxPageNum = Math.ceil(scope.maxDataLength * 1.0 / scope.maxShowNum);//有多少页
+                    scope.pageLists  = [];
+                    for(var i =1 ;i<=scope.maxPageNum;i++){
+                        scope.pageLists.push(i);
+                    }
+                })
+                scope.ChangePage = function(pageNum){//切换页面
+                    scope.currentPage = pageNum;
+                }
+                scope.PrePage =  function(){
+                    if(scope.currentPage<=1){return;}
+                    scope.currentPage--;
+                }
+                scope.NextPage =  function(){
+                    if(scope.currentPage>= Math.ceil(scope.maxDataLength * 1.0 / scope.maxShowNum)){return;}
+                    scope.currentPage++;
+                }
             }
         }
     })

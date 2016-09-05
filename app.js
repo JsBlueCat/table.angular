@@ -1,6 +1,8 @@
 var MyApp = angular.module('DynamicTable', ['Ui.Cery']);
 
 MyApp.controller('baseCtrl', ['$scope', '$http', function($scope, $http) {
+    
+    $scope.dataLength = 97;
     /*
         Type 属性代表表格中的表现形式
         0 文字
