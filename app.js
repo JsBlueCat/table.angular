@@ -1,4 +1,4 @@
-var MyApp = angular.module('DynamicTable', ['Ui.Cery','ui.bootstrap']);
+var MyApp = angular.module('DynamicTable', ['ui.cery','ui.bootstrap','ui.router']);
 
 MyApp.controller('baseCtrl', ['$scope', '$http', function($scope, $http) {
     
@@ -80,6 +80,35 @@ MyApp.controller('baseCtrl', ['$scope', '$http', function($scope, $http) {
 }])
 .controller('TabsCtrl',['$scope',function($scope){
     $scope.tabs = [
-        
-    ]
+        {
+            head:"tab1",
+            title:"tab1",
+            url:"component/tab1.html"
+        },{
+            head:"tab2",
+            title:"tab2",
+            url:"component/tab2.html"
+        },{
+            head:"tab3",
+            title:"tab3",
+            url:"component/tab3.html"
+        }
+    ];
+}])
+.controller('taboneCtrl',['$scope','$rootScope',function($scope,$rootScope){
+    $scope.tabs = [
+        {
+            head:"tab11",
+            title:"tab1.tab11",
+            url:"component/tab11.html"
+        },{
+            head:"tab21",
+            title:"tab1.tab21",
+            url:"component/tab21.html"
+        },{
+            head:"tab31",
+            title:"tab1.tab31",
+            url:"component/tab31.html"
+        }
+    ];
 }])

@@ -18,19 +18,23 @@
             暂无数据
         </dynamic-table>
     -->
-
-    <uib-tabset active="activeJustified" justified="true">
-        <uib-tab index="0" heading="Justified" >Justified content</uib-tab>
-        <uib-tab index="1" heading="SJ" >Short Labeled Justified content</uib-tab>
-        <uib-tab index="2" heading="Long Justified" >Long Labeled Justified content</uib-tab>
-    </uib-tabset>
+    <div ng-controller="TabsCtrl">
+        <uib-tabset active="activeJustified" justified="true">
+            <uib-tab index="$index" ng-repeat="tab in tabs" heading="{{tab.head}}" ui-sref="{{tab.title}}">
+                <div ui-view></div>
+            </uib-tab>
+        </uib-tabset>
+    </div>
+    
 
     <script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
     <script src="http://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="http://cdn.bootcss.com/angular.js/1.5.8/angular.min.js"></script>
+    <script src="http://cdn.bootcss.com/angular-ui-router/1.0.0-beta.1/angular-ui-router.min.js"></script>
     <script src="http://cdn.bootcss.com/angular-ui-bootstrap/2.1.3/ui-bootstrap.min.js"></script>
     <script src="http://cdn.bootcss.com/angular-ui-bootstrap/2.1.3/ui-bootstrap-tpls.min.js"></script>
     <script src="app.js"></script>
+    <script src="router.js"></script>
     <script src="js/directives.js"></script>
 </body>
 

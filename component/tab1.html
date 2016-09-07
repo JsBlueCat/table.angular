@@ -1,0 +1,7 @@
+<div ng-controller="taboneCtrl">
+    <uib-tabset active="activeJustified" justified="true">
+        <uib-tab index="$index" ng-repeat="tab in tabs" heading="{{tab.head}}" ui-sref="{{tab.title}}">
+            <div ui-view></div>
+        </uib-tab>
+    </uib-tabset>
+</div>
