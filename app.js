@@ -121,7 +121,15 @@ MyApp.controller('baseCtrl', ['$scope', '$http', function($scope, $http) {
         return  $location.path().includes(x.head);
     })
     $scope.ChangePath  = function(path){
-        $rootScope.$state.go(path);
+        console.log(1);
+        if($location.path().includes(path)){
+
+        }else{
+            $rootScope.$state.go(path);
+        }
+    }
+    $scope.Remove = function(e){
+        console.log(e);
     }
 }])
 .controller('taboneCtrl',['$scope','$rootScope','$location',function($scope,$rootScope,$location){

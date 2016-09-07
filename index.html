@@ -23,7 +23,7 @@
             <uib-tab index="$index" ng-repeat="tab in tabs" ng-click="ChangePath(tab.title)">
                  <uib-tab-heading>
                     {{tab.head}} 
-                    <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <button type="button" class="close" data-dismiss="alert" ng-click="Remove($event);"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                 </uib-tab-heading>
                 <div ui-view></div>
             </uib-tab>
