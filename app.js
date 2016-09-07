@@ -1,4 +1,4 @@
-var MyApp = angular.module('DynamicTable', ['Ui.Cery']);
+var MyApp = angular.module('DynamicTable', ['Ui.Cery','ui.bootstrap']);
 
 MyApp.controller('baseCtrl', ['$scope', '$http', function($scope, $http) {
     
@@ -77,4 +77,9 @@ MyApp.controller('baseCtrl', ['$scope', '$http', function($scope, $http) {
         console.log(CurrentPage);
         console.log(MaxShowNum);
     }
+}])
+.controller('TabsCtrl',['$scope',function($scope){
+    $scope.tabs = [
+        
+    ]
 }])

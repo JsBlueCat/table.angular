@@ -13,15 +13,23 @@
 <body ng-controller="baseCtrl"  ng-init="initialize()">
 
     
-    <dynamic-table titles="tableTitles" datas="datas" data-find-option="id" option-items="options" current-page="NowPage" max-show-num="MaxShowNum" max-data-length="dataLength" change-data="ChangePageNum">
-        暂无数据
-    </dynamic-table>
-    {{NowPage}}
+<!--    
+        <dynamic-table titles="tableTitles" datas="datas" data-find-option="id" option-items="options" current-page="NowPage" max-show-num="MaxShowNum" max-data-length="dataLength" change-data="ChangePageNum">
+            暂无数据
+        </dynamic-table>
+    -->
 
+    <uib-tabset active="activeJustified" justified="true">
+        <uib-tab index="0" heading="Justified" >Justified content</uib-tab>
+        <uib-tab index="1" heading="SJ" >Short Labeled Justified content</uib-tab>
+        <uib-tab index="2" heading="Long Justified" >Long Labeled Justified content</uib-tab>
+    </uib-tabset>
 
     <script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
     <script src="http://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="http://cdn.bootcss.com/angular.js/1.5.8/angular.min.js"></script>
+    <script src="http://cdn.bootcss.com/angular-ui-bootstrap/2.1.3/ui-bootstrap.min.js"></script>
+    <script src="http://cdn.bootcss.com/angular-ui-bootstrap/2.1.3/ui-bootstrap-tpls.min.js"></script>
     <script src="app.js"></script>
     <script src="js/directives.js"></script>
 </body>
