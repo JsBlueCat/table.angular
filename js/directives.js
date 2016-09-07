@@ -99,13 +99,3 @@ angular.module('ui.cery', [])
             }
         }
     })
-    .directive('autoClick',['$rootScope',function($rootScope){
-        return {
-            restrict: 'A',
-            link:function(scope,element,attr){
-                if(scope.$first){
-                    $rootScope.$state.go(attr.uiSref);
-                }
-            }
-        }
-    }])

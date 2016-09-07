@@ -1,5 +1,28 @@
 var MyApp = angular.module('DynamicTable', ['ui.cery','ui.bootstrap','ui.router']);
 
+if (!Array.prototype.findIndex) {
+  Array.prototype.findIndex = function(predicate) {
+    if (this === null) {
+      throw new TypeError('Array.prototype.findIndex called on null or undefined');
+    }
+    if (typeof predicate !== 'function') {
+      throw new TypeError('predicate must be a function');
+    }
+    var list = Object(this);
+    var length = list.length >>> 0;
+    var thisArg = arguments[1];
+    var value;
+
+    for (var i = 0; i < length; i++) {
+      value = list[i];
+      if (predicate.call(thisArg, value, i, list)) {
+        return i;
+      }
+    }
+    return -1;
+  };
+}
+
 MyApp.controller('baseCtrl', ['$scope', '$http', function($scope, $http) {
     
     $scope.dataLength = 97;
@@ -78,7 +101,7 @@ MyApp.controller('baseCtrl', ['$scope', '$http', function($scope, $http) {
         console.log(MaxShowNum);
     }
 }])
-.controller('TabsCtrl',['$scope',function($scope){
+.controller('TabsCtrl',['$scope','$location',function($scope,$location){
     $scope.tabs = [
         {
             head:"tab1",
@@ -94,8 +117,11 @@ MyApp.controller('baseCtrl', ['$scope', '$http', function($scope, $http) {
             url:"component/tab3.html"
         }
     ];
+    $scope.activeJustified = $scope.tabs.findIndex(function(x){
+        return  $location.path().includes(x.head);
+    })
 }])
-.controller('taboneCtrl',['$scope','$rootScope',function($scope,$rootScope){
+.controller('taboneCtrl',['$scope','$rootScope','$location',function($scope,$rootScope,$location){
     $scope.tabs = [
         {
             head:"tab11",
@@ -111,4 +137,10 @@ MyApp.controller('baseCtrl', ['$scope', '$http', function($scope, $http) {
             url:"component/tab31.html"
         }
     ];
+    $rootScope.$state.go($scope.tabs[0].title);
+    $location.path($scope.tabs[0].title);
+    $scope.activeJustified = $scope.tabs.findIndex(function(x){
+        return  $location.path().includes(x.head);
+    })
 }])
+
