@@ -115,21 +115,42 @@ MyApp.controller('baseCtrl', ['$scope', '$http', function($scope, $http) {
             head:"tab3",
             title:"tab3",
             url:"component/tab3.html"
+        },{
+            head:"tab4",
+            title:"tab4",
+            url:"component/tab3.html"
+        },{
+            head:"tab5",
+            title:"tab5",
+            url:"component/tab3.html"
+        },{
+            head:"tab6",
+            title:"tab6",
+            url:"component/tab3.html"
+        },{
+            head:"tab7",
+            title:"tab7",
+            url:"component/tab3.html"
         }
     ];
+    var titles = $scope.tabs.map(function(x){return x.title});
     $scope.activeJustified = $scope.tabs.findIndex(function(x){
         return  $location.path().includes(x.head);
     })
-    $scope.ChangePath  = function(path){
-        console.log(1);
-        if($location.path().includes(path)){
 
+    $scope.$watch('activeJustified',function(){
+        var path =  titles[$scope.activeJustified];
+        $rootScope.$state.go(path);
+    })
+    $scope.Remove = function(tab,e){
+        var index = $scope.tabs.findIndex(function(x){
+            return x.head == tab.head;
+        });
+        if(index<0) {
         }else{
-            $rootScope.$state.go(path);
+            $scope.tabs.splice(index,1);
         }
-    }
-    $scope.Remove = function(e){
-        console.log(e);
+        e.preventDefault();
     }
 }])
 .controller('taboneCtrl',['$scope','$rootScope','$location',function($scope,$rootScope,$location){
