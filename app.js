@@ -101,7 +101,7 @@ MyApp.controller('baseCtrl', ['$scope', '$http', function($scope, $http) {
         console.log(MaxShowNum);
     }
 }])
-.controller('TabsCtrl',['$scope','$location',function($scope,$location){
+.controller('TabsCtrl',['$scope','$location','$rootScope',function($scope,$location,$rootScope){
     $scope.tabs = [
         {
             head:"tab1",
@@ -120,6 +120,9 @@ MyApp.controller('baseCtrl', ['$scope', '$http', function($scope, $http) {
     $scope.activeJustified = $scope.tabs.findIndex(function(x){
         return  $location.path().includes(x.head);
     })
+    $scope.ChangePath  = function(path){
+        $rootScope.$state.go(path);
+    }
 }])
 .controller('taboneCtrl',['$scope','$rootScope','$location',function($scope,$rootScope,$location){
     $scope.tabs = [

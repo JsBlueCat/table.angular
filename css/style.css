@@ -2,3 +2,5 @@
 .table{margin-bottom: 0;}
 .page>.pageinfo{ margin-left: 5px;}
 .page>.pageinfo>.page-number {margin: 0 5px;}
+.red{color: #f00;}
+.pointer{cursor: pointer}
